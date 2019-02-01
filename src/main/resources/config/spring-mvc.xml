@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.blog.*"/>
+
+    <!-- 静态资源默认servlet配置 -->
+
+    <mvc:default-servlet-handler/>
+
+    <!--<bean name="mappingJacksonHttpMessageConverter"-->
+    <!--class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
+    <!--<property name="supportedMediaTypes">-->
+    <!--<list>-->
+    <!--<value>text/html;charset=UTF-8</value>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; 启动SpringMVC的注解功能，完成请求和注解POJO的映射 &ndash;&gt;-->
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">-->
+    <!--<property name="messageConverters">-->
+    <!--<list>-->
+    <!--<ref bean="mappingJacksonHttpMessageConverter"/> &lt;!&ndash; JSON转换器 &ndash;&gt;-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--</bean>-->
+
+    <!-- 开启SpringMVC注解模式 -->
+
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <!-- 配置Fastjson支持 -->
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json</value>
+                    </list>
+                </property>
+                <property name="features">
+                    <list>
+                        <value>WriteMapNullValue</value>
+                        <value>QuoteFieldNames</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+
+    <!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="1"/>
+        <property name="prefix" value="/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--这里是对静态资源的映射-->
+
+    <mvc:resources mapping="/js/**" location="/blog/assets/js/"/>
+    <mvc:resources mapping="/css/**" location="/blog/assets/css/"/>
+    <!--<mvc:resources mapping="/fonts/**" location="static/fonts/"/>-->
+    <mvc:resources mapping="/images/**" location="/blog/images/"/>
+    <mvc:resources mapping="/assets/**" location="/blog/assets/"/>
+    <!--<mvc:resources mapping="/html/**" location="/blog/"/>-->
+
+
+    <!-- 文件上传配置 -->
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 默认编码 -->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- 上传文件大小限制为31M，31*1024*1024 -->
+        <property name="maxUploadSize" value="32505856"/>
+        <!-- 内存中的最大值 -->
+        <property name="maxInMemorySize" value="4096"/>
+    </bean>
+
+    <!--&lt;!&ndash;SpringMVC 采用 模板引擎   &ndash;&gt;-->
+    <!--<bean id="templateResolver"-->
+    <!--class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">-->
+    <!--<property name="prefix" value="/template/"/>-->
+    <!--<property name="suffix" value=".html"/>-->
+    <!--<property name="characterEncoding" value="UTF-8"/>-->
+    <!--<property name="order" value="1"/>-->
+    <!--<property name="templateMode" value="HTML5"/>-->
+    <!--<property name="cacheable" value="false"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="templateEngine"-->
+    <!--class="org.thymeleaf.spring4.SpringTemplateEngine">-->
+    <!--<property name="templateResolver" ref="templateResolver"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="viewResolver" class="org.thymeleaf.spring4.view.ThymeleafViewResolver">-->
+    <!--<property name="templateEngine" ref="templateEngine"/>-->
+    <!--<property name="characterEncoding" value="UTF-8"/>-->
+    <!--</bean>-->
+
+</beans>
