@@ -7,13 +7,13 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--开启注解扫描  -->
-    <context:component-scan base-package="com.myblog.*" />
+    <context:component-scan base-package="main.com.myblog.*" />
 
     <!--数据源配置   -->
 
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:resources/config/database.properties" />
+        <property name="location" value="classpath:main/resources/config/database.properties" />
     </bean>
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
@@ -37,8 +37,8 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="mapperLocations" value="classpath:com/myblog/mapper/*.xml"></property>
-        <property name="configLocation" value="classpath:resources/config/mybatis-config.xml"></property>
+        <property name="mapperLocations" value="classpath:main/com/myblog/mapper/*.xml"></property>
+        <property name="configLocation" value="classpath:main/resources/config/mybatis-config.xml"></property>
         <!-- 注意其他配置 -->
 
         <property name="plugins">
@@ -59,7 +59,7 @@
     <!--mybatis 开启扫描文件  -->
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.blog.mapper" />
+        <property name="basePackage" value="main.com.blog.mapper" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>
 
