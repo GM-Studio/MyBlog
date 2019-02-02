@@ -59,7 +59,7 @@
     <!--mybatis 开启扫描文件  -->
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="main.com.blog.mapper" />
+        <property name="basePackage" value="main.com.myblog.mapper" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>
 

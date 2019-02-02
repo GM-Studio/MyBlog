@@ -1,7 +1,5 @@
 package main.com.myblog.model.VO;
 
-
-
 import java.io.Serializable;
 import java.util.List;
 
