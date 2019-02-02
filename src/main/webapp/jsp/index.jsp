@@ -296,7 +296,7 @@
         </div>
     </div>
     <div class="blog-text-center">© 2018 AllMobilize, Inc. Licensed under MIT license.Made By Squirrel Studio.
-        Desgin By Amaze UI  </footer>
+        Desgin By Amaze UI  </div></footer>
 
 
 

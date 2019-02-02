@@ -1,4 +1,4 @@
-package com.myblog.model.DO;
+package main.com.myblog.model.DO;
 
 import java.io.Serializable;
 import java.util.Date;
