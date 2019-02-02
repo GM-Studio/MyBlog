@@ -14,6 +14,7 @@ public class User implements Serializable {
     private String user_addr;
     private String user_pass;
     private String user_desc;
+    private String user_icon_url;
 
     public long getUser_id() {
         return user_id;
