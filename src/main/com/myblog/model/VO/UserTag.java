@@ -5,22 +5,30 @@ import java.io.Serializable;
 public class UserTag implements Serializable {
 
     private static final long serialVersionUID = 8094529914921779725L;
-    private long tag_id;
-    private String tag_name;
+    private long tagId;
+    private String tagName;
 
-    public long getTag_id() {
-        return tag_id;
+    public long getTagId() {
+        return tagId;
     }
 
-    public void setTag_id(long tag_id) {
-        this.tag_id = tag_id;
+    public void setTagId(long tagId) {
+        this.tagId = tagId;
     }
 
-    public String getTag_name() {
-        return tag_name;
+    public String getTagName() {
+        return tagName;
     }
 
-    public void setTag_name(String tag_name) {
-        this.tag_name = tag_name;
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
+    }
+
+    @Override
+    public String toString() {
+        return "UserTag{" +
+                "tagId=" + tagId +
+                ", tagName='" + tagName + '\'' +
+                '}';
     }
 }

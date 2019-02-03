@@ -3,46 +3,49 @@ package main.com.myblog.model.VO;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * @author SquirrelChen
+ */
 public class User implements Serializable {
 
     private static final long serialVersionUID = 4488803431001477959L;
 
-    private long user_id;
-    private String user_name;
-    private String user_desc;
-    private String user_img_url;
+    private long userId;
+    private String userName;
+    private String userDesc;
+    private String userImgUrl;
     private List<UserTag> userTags;
 
-    public long getUser_id() {
-        return user_id;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getUser_desc() {
-        return user_desc;
+    public String getUserDesc() {
+        return userDesc;
     }
 
-    public void setUser_desc(String user_desc) {
-        this.user_desc = user_desc;
+    public void setUserDesc(String userDesc) {
+        this.userDesc = userDesc;
     }
 
-    public String getUser_img_url() {
-        return user_img_url;
+    public String getUserImgUrl() {
+        return userImgUrl;
     }
 
-    public void setUser_img_url(String user_img_url) {
-        this.user_img_url = user_img_url;
+    public void setUserImgUrl(String userImgUrl) {
+        this.userImgUrl = userImgUrl;
     }
 
     public List<UserTag> getUserTags() {
@@ -51,5 +54,16 @@ public class User implements Serializable {
 
     public void setUserTags(List<UserTag> userTags) {
         this.userTags = userTags;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userDesc='" + userDesc + '\'' +
+                ", userImgUrl='" + userImgUrl + '\'' +
+                ", userTags=" + userTags.toString() +
+                '}';
     }
 }
