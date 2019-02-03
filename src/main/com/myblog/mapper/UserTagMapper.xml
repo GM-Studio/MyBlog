@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="main.com.myblog.mapper.UserTagMapper">
 
-
     <resultMap id="userTagVO" type="UserTagVO">
-        <id property="tag_id" column="tag_id"></id>
-        <result property="tag_name" column="tag_name"></result>
+        <id property="tagId" column="tag_id"/>
+        <result property="tagName" column="tag_name"/>
     </resultMap>
 
-    <select id="getUserTagVO" resultMap="userTagVO">
-        select tag_id,tag_name from user_tag where tag_user_id=#{user_id}
+    <select id="selectUserTagVOById" resultMap="userTagVO">
+        select tag_id,tag_name from user_tag where tag_user_id=#{userId}
     </select>
+
 </mapper>

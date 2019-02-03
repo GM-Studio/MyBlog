@@ -2,30 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="main.com.myblog.mapper.UserMapper">
 
-    
     <resultMap id="userVO" type="UserVO">
-        <id property="user_id" column="user_id"></id>
-        <result property="user_name" column="user_name"></result>
-        <result property="user_desc" column="user_desc"></result>
-        <result property="user_img_url" column="user_img_url"></result>
-        <!--<collection property="userTags" column="user_iduser_id" select="getUserTagVO" ofType="UserTagVO" fetchType="eager">-->
-        <!--<collection property="userTags" column="??" select="getUserTagVO" ofType="UserTagVO" fetchType="eager">-->
-        <!--</collection>-->
-        <collection property="userTags" column="user_id" ofType="UserTagVO">
-            <id property="tag_id" column="tag_id"/>
-            <result property="tag_name" column="tag_name"/>
+        <id property="userId" column="user_id"></id>
+        <result property="userName" column="user_name"></result>
+        <result property="userDesc" column="user_desc"></result>
+        <result property="userImgUrl" column="user_img_url"></result>
+        <collection property="userTags" column="userId" ofType="userTagVO"  fetchType="eager">
+            <id property="tagId" column="tag_id"></id>
+            <result property="tagName" column="tag_name"/>
         </collection>
     </resultMap>
 
 
-    <select id="getUserVO" resultMap="userVO">
-        select user_id,user_name,user_desc,user_img_url,tag_id,tag_name from user,user_tag where user_id=tag_user_id and  user_id=#{user_id}
+    <select id="selectUserVOById" resultMap="userVO" >
+        select user_id,user_name,user_desc,user_img_url,tag_id,tag_name from user,user_tag where user_id=tag_user_id and  user_id=#{userId}
     </select>
-
-
-    <!--<select id="getUserTagVO" resultType="UserTagVO">-->
-        <!--select tag_id,tag_name from user_tag where tag_user_id=#{user_id}-->
-    <!--</select>-->
 
 
 </mapper>
