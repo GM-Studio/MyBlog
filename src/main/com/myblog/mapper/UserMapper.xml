@@ -11,11 +11,26 @@
             <id property="tagId" column="tag_id"></id>
             <result property="tagName" column="tag_name"/>
         </collection>
+        <collection property="userSocials" column="userId" ofType="userSocialVO" fetchType="eager">
+            <id property="socialId" column="social_id"></id>
+            <result property="socialName" column="social_name"/>
+            <result property="socialUrl" column="social_url"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="userSocialVO" type="UserSocialVO">
+        <id property="socialId" column="social_id"></id>
+        <result property="socialName" column="social_name"/>
+        <result property="socialUrl" column="social_url"/>
     </resultMap>
 
 
     <select id="selectUserVOById" resultMap="userVO" >
-        select user_id,user_name,user_desc,user_img_url,tag_id,tag_name from user,user_tag where user_id=tag_user_id and  user_id=#{userId}
+        select user_id,user_name,user_desc,user_img_url,tag_id,tag_name,social_id,social_name,social_url
+        from user,user_tag,user_social
+        where user_id=tag_user_id
+        and social_user_id=user_id
+        and user_id=#{userId}
     </select>
 
 

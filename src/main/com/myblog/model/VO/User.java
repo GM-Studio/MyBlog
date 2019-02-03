@@ -15,6 +15,15 @@ public class User implements Serializable {
     private String userDesc;
     private String userImgUrl;
     private List<UserTag> userTags;
+    private List<UserSocial> userSocials;
+
+    public List<UserSocial> getUserSocials() {
+        return userSocials;
+    }
+
+    public void setUserSocials(List<UserSocial> userSocials) {
+        this.userSocials = userSocials;
+    }
 
     public long getUserId() {
         return userId;
@@ -56,6 +65,7 @@ public class User implements Serializable {
         this.userTags = userTags;
     }
 
+
     @Override
     public String toString() {
         return "User{" +
@@ -64,6 +74,7 @@ public class User implements Serializable {
                 ", userDesc='" + userDesc + '\'' +
                 ", userImgUrl='" + userImgUrl + '\'' +
                 ", userTags=" + userTags.toString() +
+                ", userSocials=" + userSocials.toString() +
                 '}';
     }
 }

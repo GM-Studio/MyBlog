@@ -54,6 +54,7 @@
     <typeAliases>
         <typeAlias type="main.com.myblog.model.VO.User" alias="UserVO"></typeAlias>
         <typeAlias type="main.com.myblog.model.VO.UserTag" alias="UserTagVO"></typeAlias>
+        <typeAlias type="main.com.myblog.model.VO.UserSocial" alias="UserSocialVO"></typeAlias>
     </typeAliases>
 
 </configuration>
