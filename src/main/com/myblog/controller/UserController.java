@@ -26,18 +26,19 @@ public class UserController {
     private Map resultmap=new HashMap<>();
 
 
-    @RequestMapping(value = "/user/{user_id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/user/{userId}",method = RequestMethod.GET)
     @ResponseBody
-    public Object userVO(@PathVariable("user_id")long user_id)
+    public Object userVO(@PathVariable("userId")long userId)
     {
-        User user=userService.getUserVO(user_id);
+
+        User user=userService.getUserVO(userId);
         if(user!=null)
         {
-            resultmap.put("data",user);
             code=200;
             message="SUCCESS There are have data";
             resultmap.put("code",code);
             resultmap.put("msg",message);
+            resultmap.put("data",user);
             return JSON.toJSON(resultmap);
         }
         code=0;
