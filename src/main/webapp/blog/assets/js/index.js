@@ -49,6 +49,11 @@ $(document).ready(function () {
                 $.each(data.data.userTags,function (i,x) {
                     mytags.append("<a class=\"blog-tag\">"+x.tagName+"</a>\n");
                 })
+                var mysocial=$("#mycontact");
+                mysocial.empty();
+                $.each(data.data.userSocials,function (i,x) {
+                    mysocial.append("<a href="+x.socialUrl+"\"><span class=\"am-icon-"+x.socialName+" am-icon-fw am-primary blog-icon\"></span></a>\n");
+                })
             }
         },
         error:function (data) {
